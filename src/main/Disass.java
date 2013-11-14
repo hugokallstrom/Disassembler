@@ -1,10 +1,10 @@
 package main;
 
-
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
+
 /**
  * Main class which calls other classes
  * in order to parse a file with MIPS-instructions
@@ -22,7 +22,6 @@ public class Disass {
 	ArrayList <Long> decList;
 	ArrayList <String> mnemonicList;
 	ArrayList <String> formatList;
-
 	/**
 	 * Constructor which calls different classes
 	 * to able to parse the file which is given
