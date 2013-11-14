@@ -13,13 +13,14 @@ public class OpMappings {
 	public static OpCode allOP[];
 	public static String RFunctions[];
 	public static String OP28Functions[];
+	public static String OP1Functions[];
 	public static String registerNicks[];
 
 	public OpMappings(){
 
 			allOP = new OpCode[63];
 			RFunctions = new String[55];
-			OP28Functions = new String[39];
+			OP28Functions = new String[35];
 
 			allOP[2] = new OpCode("j",'J');
 			allOP[3] = new OpCode("jal",'J');
@@ -118,9 +119,40 @@ public class OpMappings {
 
 			RFunctions[54] = "tne";
 
+			//filling in values for the opcode 28.
+
+			OP28Functions[0] = "madd";
+			OP28Functions[1] = "maddu";
+			OP28Functions[2] = "mul";
+
+			OP28Functions[4] = "msub";
+			OP28Functions[5] = "msubu";
+
+			OP28Functions[33] = "clz";
+			OP28Functions[34] = "clo";
+
+			//filling in values for the opcode 1.
+
+			OP1Functions[0] = "bltz";
+			OP1Functions[1] = "bgez";
+			OP1Functions[2] = "bltzl";
+			OP1Functions[3] = "bgezl";
+
+			OP1Functions[8] = "tgei";
+			OP1Functions[9] = "tgeiu";
+			OP1Functions[10] = "tlti";
+			OP1Functions[11] = "tltiu";
+			OP1Functions[12] = "tegi";
+
+			OP1Functions[14] = "tnei";
+
+			OP1Functions[16] = "bltzal";
+			OP1Functions[17] = "bgezal";
+			OP1Functions[18] = "bltzall";
+			OP1Functions[19] = "bgczall";
 
 
-
+			//filling in registers
 			registerNicks[0] = "$zero";
 			registerNicks[1] = "$at";
 			registerNicks[2] = "$v0";
@@ -153,9 +185,7 @@ public class OpMappings {
 			registerNicks[29] = "$sp";
 			registerNicks[30] = "$fp";
 			registerNicks[31] = "$ra";
-
 	}
-
 
 
 }
