@@ -1,4 +1,4 @@
-package Mappings;
+package mappings;
 
 public class OpMappings {
 
