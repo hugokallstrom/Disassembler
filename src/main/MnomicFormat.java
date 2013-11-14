@@ -3,7 +3,7 @@ package main;
 import mappings.OpCode;
 import mappings.OpMappings;
 
-public class Mnomic_Format {
+public class MnomicFormat {
 	
 	
 	public static char getFormat(int op) {
@@ -25,13 +25,14 @@ public class Mnomic_Format {
 	public static String getMnomicFormat(String format, long number) {
 		if(format.contains("R")) {
 			String temp = Long.toBinaryString(number);
+			int op = Integer.parseInt(temp.substring(0, 6));
 			int rs = Integer.parseInt(temp.substring(6, 11));
 			int rt = Integer.parseInt(temp.substring(11, 16));
 			int rd = Integer.parseInt(temp.substring(16, 21));
 			int shamt = Integer.parseInt(temp.substring(21, 26));
 			int funct = Integer.parseInt(temp.substring(26, 32));
 			
-			OpCode temp2 = OpCode.get...
+			OpCode temp2 = OpMappings.allOP[op];
 			if()
 			String functName = OpCode.get...
 			String regNick1 = OpMappings.registerNicks[rs];
