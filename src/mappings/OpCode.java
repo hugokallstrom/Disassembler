@@ -28,6 +28,7 @@ public class OpCode {
 	 * method for getting the opCode type
 	 * @return char OpCodeType
 	 */
+
 	public char getOpCodeType(){
 		return opCodeType;
 	}

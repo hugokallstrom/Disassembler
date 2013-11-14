@@ -73,16 +73,16 @@ public class OpMappings {
 
 			//filling in values for Rfunctions (with opCode 0x00)
 
-			RFunctions[0] = "";
-			RFunctions[2] = "";
-			RFunctions[3] = "";
-			RFunctions[4] = "";
+			RFunctions[0] = "sll";
+			RFunctions[2] = "srl";
+			RFunctions[3] = "sra";
+			RFunctions[4] = "sllv";
 
-			RFunctions[6] = "";
-			RFunctions[7] = "";
-			RFunctions[8] = "";
-			RFunctions[9] = "";
-			RFunctions[10] = "";
+			RFunctions[6] = "srlv";
+			RFunctions[7] = "srav";
+			RFunctions[8] = "jr";
+			RFunctions[9] = "jalr";
+			RFunctions[10] = "movz";
 			RFunctions[11] = "";
 			RFunctions[12] = "";
 			RFunctions[13] = "";
