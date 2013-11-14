@@ -1,5 +1,8 @@
+/**
+ * class containing simple facts about one OpCode
+ * @autor Mattias Hinnerson, oi11mhn
+ */
 package mappings;
-
 
 
 public class OpCode {
@@ -7,26 +10,10 @@ public class OpCode {
 	private String opCodeName;
 	private char opCodeType;
 
-	public OpCode(){
+	public OpCode(String opName, char opType){
 
-		opCodeName = new String();
-
-	}
-
-	/**
-	 * method for setting a name to this opCode.
-	 * @param String name
-	 */
-	public void setOpCodeName(String name){
-		opCodeName = name;
-	}
-
-	/**
-	 * method for setting a type to this opCode.
-	 * @param Char OpType
-	 */
-	public void setOpCodeType(char OpType){
-		opCodeType = OpType;
+		opCodeName = opName;
+		opCodeType = opType;
 	}
 
 	/**
@@ -44,6 +31,4 @@ public class OpCode {
 	public char getOpCodeType(){
 		return opCodeType;
 	}
-
-
 }
