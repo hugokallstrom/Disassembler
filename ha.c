@@ -4,6 +4,13 @@
 
 int main(int argc, char *argv[]) {
 
+	readFile();
+
+	return 0;
+}
+
+int readFile(void) {
+
 	static const char filename[] = "file.txt";
 	FILE *file = fopen(filename, "r");
 
@@ -16,6 +23,8 @@ int main(int argc, char *argv[]) {
 	}
 	else {
 		perror(filename); /* why didn't the file open? */
+		return -1;
 	}
-	return 0;
+
+	return 1;
 }
