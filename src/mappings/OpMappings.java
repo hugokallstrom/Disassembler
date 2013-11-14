@@ -11,14 +11,14 @@ public class OpMappings {
 
 
 	public static OpCode allOP[];
-	public static String OP0Functions[];
+	public static String RFunctions[];
 	public static String OP28Functions[];
 
 
 	public OpMappings(){
 
 			allOP = new OpCode[63];
-			OP0Functions = new String[55];
+			RFunctions = new String[55];
 			OP28Functions = new String[39];
 
 			allOP[2] = new OpCode("j",'J');
@@ -33,7 +33,7 @@ public class OpMappings {
 			allOP[11] = new OpCode("sltiu",'I');
 			allOP[12] = new OpCode("andi",'I');
 			allOP[13] = new OpCode("ori",'I');
-			allOP[14] = new OpCode("xori",'R');
+			allOP[14] = new OpCode("xori",'I');
 			allOP[15] = new OpCode("lui",'I');
 
 			allOP[20] = new OpCode("beql",'I');
@@ -56,20 +56,71 @@ public class OpMappings {
 
 			allOP[46] = new OpCode("swr",'I');
 			allOP[47] = new OpCode("cache",'I');	//!!!!!!!!!!
-			allOP[48] = new OpCode("ll",'I');		//!!!!!!1
+			allOP[48] = new OpCode("ll",'I');
 			allOP[49] = new OpCode("lwc1",'I');
 			allOP[50] = new OpCode("lwc2",'I');
-			allOP[51] = new OpCode("pref",'I');		//!!!!!
+			allOP[51] = new OpCode("pref",'I');
 
-			allOP[53] = new OpCode("ldc1",'J');		//alla nedan är osäkra angående typ.
-			allOP[54] = new OpCode("ldc2",'J');
+			allOP[53] = new OpCode("ldc1",'I');
+			allOP[54] = new OpCode("ldc2",'I');
 
-			allOP[56] = new OpCode("sc",'J');
-			allOP[57] = new OpCode("swc1",'J');
-			allOP[58] = new OpCode("swc2",'J');
+			allOP[56] = new OpCode("sc",'I');
+			allOP[57] = new OpCode("swc1",'I');
+			allOP[58] = new OpCode("swc2",'I');
 
-			allOP[61] = new OpCode("sdc1",'J');
-			allOP[61] = new OpCode("sdc2",'J');
+			allOP[61] = new OpCode("sdc1",'I');
+			allOP[61] = new OpCode("sdc2",'I');
+
+			//filling in values for Rfunctions (with opCode 0x00)
+
+			RFunctions[0] = "";
+			RFunctions[2] = "";
+			RFunctions[3] = "";
+			RFunctions[4] = "";
+
+			RFunctions[6] = "";
+			RFunctions[7] = "";
+			RFunctions[8] = "";
+			RFunctions[9] = "";
+			RFunctions[10] = "";
+			RFunctions[11] = "";
+			RFunctions[12] = "";
+			RFunctions[13] = "";
+
+			RFunctions[15] = "";
+			RFunctions[16] = "";
+			RFunctions[17] = "";
+			RFunctions[18] = "";
+			RFunctions[19] = "";
+
+			RFunctions[24] = "";
+			RFunctions[25] = "";
+			RFunctions[26] = "";
+			RFunctions[27] = "";
+
+			RFunctions[32] = "";
+			RFunctions[33] = "";
+			RFunctions[34] = "";
+			RFunctions[35] = "";
+			RFunctions[36] = "";
+			RFunctions[37] = "";
+			RFunctions[38] = "";
+			RFunctions[39] = "";
+
+			RFunctions[42] = "";
+			RFunctions[43] = "";
+
+			RFunctions[48] = "";
+			RFunctions[49] = "";
+			RFunctions[50] = "";
+			RFunctions[51] = "";
+			RFunctions[52] = "";
+
+			RFunctions[54] = "";
+
+
+
+
 	}
 
 
