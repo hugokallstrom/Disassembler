@@ -83,40 +83,40 @@ public class OpMappings {
 			RFunctions[8] = "jr";
 			RFunctions[9] = "jalr";
 			RFunctions[10] = "movz";
-			RFunctions[11] = "";
-			RFunctions[12] = "";
-			RFunctions[13] = "";
+			RFunctions[11] = "movn";
+			RFunctions[12] = "syscall";
+			RFunctions[13] = "break";
 
-			RFunctions[15] = "";
-			RFunctions[16] = "";
-			RFunctions[17] = "";
-			RFunctions[18] = "";
-			RFunctions[19] = "";
+			RFunctions[15] = "sync";
+			RFunctions[16] = "mfhi";
+			RFunctions[17] = "mthi";
+			RFunctions[18] = "mflo";
+			RFunctions[19] = "mtlo";
 
-			RFunctions[24] = "";
-			RFunctions[25] = "";
-			RFunctions[26] = "";
-			RFunctions[27] = "";
+			RFunctions[24] = "mult";
+			RFunctions[25] = "multu";
+			RFunctions[26] = "div";
+			RFunctions[27] = "divu";
 
-			RFunctions[32] = "";
-			RFunctions[33] = "";
-			RFunctions[34] = "";
-			RFunctions[35] = "";
-			RFunctions[36] = "";
-			RFunctions[37] = "";
-			RFunctions[38] = "";
-			RFunctions[39] = "";
+			RFunctions[32] = "add";
+			RFunctions[33] = "addu";
+			RFunctions[34] = "sub";
+			RFunctions[35] = "subu";
+			RFunctions[36] = "and";
+			RFunctions[37] = "or";
+			RFunctions[38] = "xor";
+			RFunctions[39] = "nor";
 
-			RFunctions[42] = "";
-			RFunctions[43] = "";
+			RFunctions[42] = "slt";
+			RFunctions[43] = "sltu";
 
-			RFunctions[48] = "";
-			RFunctions[49] = "";
-			RFunctions[50] = "";
-			RFunctions[51] = "";
-			RFunctions[52] = "";
+			RFunctions[48] = "tge";
+			RFunctions[49] = "tgeu";
+			RFunctions[50] = "tlt";
+			RFunctions[51] = "tltu";
+			RFunctions[52] = "teq";
 
-			RFunctions[54] = "";
+			RFunctions[54] = "tne";
 
 
 
