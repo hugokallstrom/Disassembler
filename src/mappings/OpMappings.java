@@ -13,7 +13,7 @@ public class OpMappings {
 	public static OpCode allOP[];
 	public static String RFunctions[];
 	public static String OP28Functions[];
-
+	public static String registerNicks[];
 
 	public OpMappings(){
 
@@ -120,6 +120,38 @@ public class OpMappings {
 
 
 
+			registerNicks[0] = "$zero";
+			registerNicks[1] = "$at";
+			registerNicks[2] = "$v0";
+			registerNicks[3] = "$v1";
+			registerNicks[4] = "$a0";
+			registerNicks[5] = "$a1";
+			registerNicks[6] = "$a2";
+			registerNicks[7] = "$a3";
+			registerNicks[8] = "$t0";
+			registerNicks[9] = "$t1";
+			registerNicks[10] = "$t2";
+			registerNicks[11] = "$t3";
+			registerNicks[12] = "$t4";
+			registerNicks[13] = "$t5";
+			registerNicks[14] = "$t6";
+			registerNicks[15] = "$t7";
+			registerNicks[16] = "$s0";
+			registerNicks[17] = "$s1";
+			registerNicks[18] = "$s2";
+			registerNicks[19] = "$s3";
+			registerNicks[20] = "$s4";
+			registerNicks[21] = "$s5";
+			registerNicks[22] = "$s6";
+			registerNicks[23] = "$s7";
+			registerNicks[24] = "$t8";
+			registerNicks[25] = "$t9";
+			registerNicks[26] = "$k0";
+			registerNicks[27] = "$k1";
+			registerNicks[28] = "$gp";
+			registerNicks[29] = "$sp";
+			registerNicks[30] = "$fp";
+			registerNicks[31] = "$ra";
 
 	}
 
