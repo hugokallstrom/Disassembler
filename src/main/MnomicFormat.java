@@ -22,8 +22,8 @@ public class MnomicFormat {
 				
 	}
 	
-	public static String getMnomicFormat(String format, long number) {
-		if(format.contains("R")) {
+	public static String getMnomicFormat(char format, long number) {
+		if(format == 'R') {
 			String temp = Long.toBinaryString(number);
 			int op = Integer.parseInt(temp.substring(0, 6));
 			int rs = Integer.parseInt(temp.substring(6, 11));
@@ -33,14 +33,30 @@ public class MnomicFormat {
 			int funct = Integer.parseInt(temp.substring(26, 32));
 			
 			OpCode temp2 = OpMappings.allOP[op];
-			if()
-			String functName = OpCode.get...
+			
+			String functName = OpMappings.RFunctions[funct];
 			String regNick1 = OpMappings.registerNicks[rs];
 			String regNick2 = OpMappings.registerNicks[rt];
 			String regNick3 = OpMappings.registerNicks[rd];
 			
 			String mnemonic = functName + " " + regNick3 + " " + regNick1 + " " + regNick2; 
 
+		} else if(format == 'I') {
+			String temp = Long.toBinaryString(number);
+			int op = Integer.parseInt(temp.substring(0, 6));
+			int rs = Integer.parseInt(temp.substring(6, 11));
+			int rt = Integer.parseInt(temp.substring(11, 16));
+			int imm = Integer.parseInt(temp.substring(16, 32));
+
+			OpCode temp2 = OpMappings.allOP[op];
+			
+			String functName = temp2.getOpCodeName();
+			String regNick1 = OpMappings.registerNicks[rs];
+			String regNick2 = OpMappings.registerNicks[rt];
+			
+			String mnemonic = functName + " " + regNick2 + " " + regNick1; 
+		} else if(format == 'J') {
+			
 		}
 	}
 	
