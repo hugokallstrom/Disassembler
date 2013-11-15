@@ -20,10 +20,10 @@ public class OpMappings {
 	public OpMappings(){
 
 			allOP = new OpCode[63];
-			OP1Functions = new String[20];
+			OP1Functions = new String[31];
 			RFunctions = new String[55];
 			OP28Functions = new String[35];
-			OP161718Functions = new String[];
+			OP161718Functions = new String[31];
 
 			allOP[2] = new OpCode("j",'J');
 			allOP[3] = new OpCode("jal",'J');
@@ -153,6 +153,16 @@ public class OpMappings {
 			OP1Functions[17] = "bgezal";
 			OP1Functions[18] = "bltzall";
 			OP1Functions[19] = "bgczall";
+
+			//filling op161718 with values
+
+			OP161718Functions[0] = "mfc";
+			OP161718Functions[2] = "cfc";
+			OP161718Functions[4] = "mtc";
+			OP161718Functions[6] = "ctc";
+
+			OP161718Functions[16] = "mfc";
+
 
 
 			//filling in registers
