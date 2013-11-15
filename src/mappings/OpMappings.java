@@ -11,16 +11,19 @@ public class OpMappings {
 
 
 	public static OpCode allOP[];
+	public static OpCode OP1Functions[];
 	public static String RFunctions[];
 	public static String OP28Functions[];
-	public static String OP1Functions[];
+	public static String OP161718Functions[];
 	public static String registerNicks[];
 
 	public OpMappings(){
 
 			allOP = new OpCode[63];
+			OP1Functions = new OpCode[20];
 			RFunctions = new String[55];
 			OP28Functions = new String[35];
+			OP161718Functions = new String[];
 
 			allOP[2] = new OpCode("j",'J');
 			allOP[3] = new OpCode("jal",'J');
@@ -133,23 +136,23 @@ public class OpMappings {
 
 			//filling in values for the opcode 1.
 
-			OP1Functions[0] = "bltz";
-			OP1Functions[1] = "bgez";
-			OP1Functions[2] = "bltzl";
-			OP1Functions[3] = "bgezl";
+			OP1Functions[0] = new OpCode("bltz",'I');
+			OP1Functions[1] = new OpCode("bgez",'I');
+			OP1Functions[2] = new OpCode("bltzl",'I');
+			OP1Functions[3] = new OpCode("bgezl",'I');
 
-			OP1Functions[8] = "tgei";
-			OP1Functions[9] = "tgeiu";
-			OP1Functions[10] = "tlti";
-			OP1Functions[11] = "tltiu";
-			OP1Functions[12] = "tegi";
+			OP1Functions[8] = new OpCode("tgei",'I');
+			OP1Functions[9] = new OpCode("tgeiu",'I');
+			OP1Functions[10] = new OpCode("tlti",'I');
+			OP1Functions[11] = new OpCode("tltiu",'I');
+			OP1Functions[12] = new OpCode("tegi",'I');
 
-			OP1Functions[14] = "tnei";
+			OP1Functions[14] = new OpCode("tnei",'I');
 
-			OP1Functions[16] = "bltzal";
-			OP1Functions[17] = "bgezal";
-			OP1Functions[18] = "bltzall";
-			OP1Functions[19] = "bgczall";
+			OP1Functions[16] = new OpCode("bltzal",'I');
+			OP1Functions[17] = new OpCode("bgezal",'I');
+			OP1Functions[18] = new OpCode("bltzall",'I');
+			OP1Functions[19] = new OpCode("bgczall",'I');
 
 
 			//filling in registers
