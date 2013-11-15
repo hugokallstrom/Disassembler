@@ -13,7 +13,7 @@ public class Parser {
 
 	ArrayList <Long> decList;
 	ArrayList <String> mnemonicList = new ArrayList<String>();
-	ArrayList <String> formatList = new ArrayList<String>();
+	ArrayList <Character> formatList = new ArrayList<Character>();
 	/**
 	 * Constructor.
 	 * @param decList - decimal list
@@ -37,7 +37,7 @@ public class Parser {
 			int op = (int) instruction/67108864;
 
 			/* Insert format in formatList */
-			String format = MnomicFormat.getFormat(op);
+			char format = MnomicFormat.getFormat(op);
 			formatList.add(format);
 
 			/* Insert mnemonic representaion in mnemonicList */
@@ -57,7 +57,7 @@ public class Parser {
 	 * Returns the formatList
 	 * @return - formatList
 	 */
-	public ArrayList<String> getFormatList() {
+	public ArrayList<Character> getFormatList() {
 		return formatList;
 	}
 

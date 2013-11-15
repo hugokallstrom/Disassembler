@@ -21,7 +21,7 @@ public class Disass {
 	ArrayList <String> hexList;
 	ArrayList <Long> decList;
 	ArrayList <String> mnemonicList;
-	ArrayList <String> formatList;
+	ArrayList <Character> formatList;
 	/**
 	 * Constructor which calls different classes
 	 * to able to parse the file which is given

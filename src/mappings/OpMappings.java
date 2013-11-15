@@ -118,8 +118,6 @@ public class OpMappings {
 
 			RFunctions[54] = "";
 
-
-
 			registerNicks[0] = "$zero";
 			registerNicks[1] = "$at";
 			registerNicks[2] = "$v0";

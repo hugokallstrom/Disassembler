@@ -13,7 +13,7 @@ public class Printer {
 	ArrayList<String> hexList;
 	ArrayList<Long> decList;
 	ArrayList<String> mnemonicList;
-	ArrayList<String> formatList;
+	ArrayList<Character> formatList;
 
 	/**
 	 * Constructor.
@@ -22,7 +22,7 @@ public class Printer {
 	 * @param formatList - format list
 	 * @param mnemonicList - mnemonic list
 	 */
-	public Printer(ArrayList<Long> decList, ArrayList<String> hexList, ArrayList<String> formatList, ArrayList<String> mnemonicList) {
+	public Printer(ArrayList<Long> decList, ArrayList<String> hexList, ArrayList<Character> formatList, ArrayList<String> mnemonicList) {
 		this.decList = decList;
 		this.hexList = hexList;
 		this.formatList = formatList;
