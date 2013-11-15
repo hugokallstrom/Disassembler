@@ -13,13 +13,14 @@ public class OpMappings {
 	public static OpCode allOP[];
 	public static String RFunctions[];
 	public static String OP28Functions[];
+	public static String OP1Functions[];
 	public static String registerNicks[];
 
 	public OpMappings(){
 
 			allOP = new OpCode[63];
 			RFunctions = new String[55];
-			OP28Functions = new String[39];
+			OP28Functions = new String[35];
 
 			allOP[2] = new OpCode("j",'J');
 			allOP[3] = new OpCode("jal",'J');
@@ -83,41 +84,75 @@ public class OpMappings {
 			RFunctions[8] = "jr";
 			RFunctions[9] = "jalr";
 			RFunctions[10] = "movz";
-			RFunctions[11] = "";
-			RFunctions[12] = "";
-			RFunctions[13] = "";
+			RFunctions[11] = "movn";
+			RFunctions[12] = "syscall";
+			RFunctions[13] = "break";
 
-			RFunctions[15] = "";
-			RFunctions[16] = "";
-			RFunctions[17] = "";
-			RFunctions[18] = "";
-			RFunctions[19] = "";
+			RFunctions[15] = "sync";
+			RFunctions[16] = "mfhi";
+			RFunctions[17] = "mthi";
+			RFunctions[18] = "mflo";
+			RFunctions[19] = "mtlo";
 
-			RFunctions[24] = "";
-			RFunctions[25] = "";
-			RFunctions[26] = "";
-			RFunctions[27] = "";
+			RFunctions[24] = "mult";
+			RFunctions[25] = "multu";
+			RFunctions[26] = "div";
+			RFunctions[27] = "divu";
 
-			RFunctions[32] = "";
-			RFunctions[33] = "";
-			RFunctions[34] = "";
-			RFunctions[35] = "";
-			RFunctions[36] = "";
-			RFunctions[37] = "";
-			RFunctions[38] = "";
-			RFunctions[39] = "";
+			RFunctions[32] = "add";
+			RFunctions[33] = "addu";
+			RFunctions[34] = "sub";
+			RFunctions[35] = "subu";
+			RFunctions[36] = "and";
+			RFunctions[37] = "or";
+			RFunctions[38] = "xor";
+			RFunctions[39] = "nor";
 
-			RFunctions[42] = "";
-			RFunctions[43] = "";
+			RFunctions[42] = "slt";
+			RFunctions[43] = "sltu";
 
-			RFunctions[48] = "";
-			RFunctions[49] = "";
-			RFunctions[50] = "";
-			RFunctions[51] = "";
-			RFunctions[52] = "";
+			RFunctions[48] = "tge";
+			RFunctions[49] = "tgeu";
+			RFunctions[50] = "tlt";
+			RFunctions[51] = "tltu";
+			RFunctions[52] = "teq";
 
-			RFunctions[54] = "";
+			RFunctions[54] = "tne";
 
+			//filling in values for the opcode 28.
+
+			OP28Functions[0] = "madd";
+			OP28Functions[1] = "maddu";
+			OP28Functions[2] = "mul";
+
+			OP28Functions[4] = "msub";
+			OP28Functions[5] = "msubu";
+
+			OP28Functions[33] = "clz";
+			OP28Functions[34] = "clo";
+
+			//filling in values for the opcode 1.
+
+			OP1Functions[0] = "bltz";
+			OP1Functions[1] = "bgez";
+			OP1Functions[2] = "bltzl";
+			OP1Functions[3] = "bgezl";
+
+			OP1Functions[8] = "tgei";
+			OP1Functions[9] = "tgeiu";
+			OP1Functions[10] = "tlti";
+			OP1Functions[11] = "tltiu";
+			OP1Functions[12] = "tegi";
+
+			OP1Functions[14] = "tnei";
+
+			OP1Functions[16] = "bltzal";
+			OP1Functions[17] = "bgezal";
+			OP1Functions[18] = "bltzall";
+			OP1Functions[19] = "bgczall";
+
+
+			//filling in registers
 			registerNicks[0] = "$zero";
 			registerNicks[1] = "$at";
 			registerNicks[2] = "$v0";
@@ -150,9 +185,7 @@ public class OpMappings {
 			registerNicks[29] = "$sp";
 			registerNicks[30] = "$fp";
 			registerNicks[31] = "$ra";
-
 	}
-
 
 
 }
