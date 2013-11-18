@@ -32,21 +32,20 @@ public class Disass {
 	 */
 	public Disass(String file) throws FileNotFoundException {
 
+		InstructionInfo insInfo = new InstructionInfo();
+
 		/* Read the file with hex and dec instructions */
 		FileParser reader = new FileParser(file);
 		reader.readFile();
-		reader.divideList();
-		decList = reader.getDecList();
+		reader.divideList(insInfo);
 
 		/* Parse the instructions */
-		Parser parser = new Parser(decList);
-		parser.parseOP();
-		formatList = parser.getFormatList();
-		mnemonicList = parser.getMnemonicList();
+		Parser parser = new Parser();
+		parser.parseOP(insInfo);
 
 		/* Print data */
-		Printer print = new Printer(decList, hexList, formatList, mnemonicList);
-		print.printData();
+		Printer print = new Printer();
+		print.printData(insInfo);
 	}
 	/**
 	 * Main function, calling the constructor of the
@@ -55,11 +54,16 @@ public class Disass {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		try {
-			Disass dis = new Disass(args[0]);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+		if(args[0] != null) {
+			try {
+				Disass dis = new Disass(args[0]);
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
+		} else {
+			System.out.println("Please specify an input file");
 		}
+
 	}
 
 }

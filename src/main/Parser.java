@@ -11,15 +11,11 @@ import java.util.ArrayList;
  */
 public class Parser {
 
-	ArrayList <Long> decList;
-	ArrayList <String> mnemonicList = new ArrayList<String>();
-	ArrayList <Character> formatList = new ArrayList<Character>();
 	/**
 	 * Constructor.
-	 * @param decList - decimal list
 	 */
-	public Parser(ArrayList<Long> decList) {
-		this.decList = decList;
+	public Parser() {
+
 	}
 	/**
 	 * Parse the instructions by
@@ -27,39 +23,23 @@ public class Parser {
 	 * instructions and calling
 	 * the class MnemonicFormat.
 	 */
-	public void parseOP() {
+	public void parseOP(InstructionInfo insInfo) {
 		int i = 0;
 
-		while(i < decList.size()) {
-			long instruction = decList.get(i);
+		while(i < insInfo.getSize()) {
+			long instruction = insInfo.getDec(i);
 
 			/* Extract the op from the instruction */
 			int op = (int) instruction/67108864;
 
 			/* Insert format in formatList */
 			char format = MnomicFormat.getFormat(op);
-			formatList.add(format);
+			insInfo.addFormat(i, format);
 
 			/* Insert mnemonic representaion in mnemonicList */
 			String mnemonic = MnomicFormat.getMnomicFormat(format, instruction);
-			mnemonicList.add(mnemonic);
+			insInfo.addMnemonic(i, mnemonic);
 			i++;
 		}
 	}
-	/**
-	 * Returns the mnemonicList
-	 * @return - mnemonicList
-	 */
-	public ArrayList<String> getMnemonicList() {
-		return mnemonicList;
-	}
-	/**
-	 * Returns the formatList
-	 * @return - formatList
-	 */
-	public ArrayList<Character> getFormatList() {
-		return formatList;
-	}
-
-
 }

@@ -15,8 +15,6 @@ import java.util.ArrayList;
 public class FileParser {
 
 	ArrayList <String> codeList = new ArrayList<String>();
-	ArrayList <String> hexList = new ArrayList<String>();
-	ArrayList <Long> decList = new ArrayList<Long>();
 	String file;
 
 	/**
@@ -47,7 +45,7 @@ public class FileParser {
 	 * divideList - divides the list, "codeList", and creates
 	 * hexadecimal and decimal representations of all instructions.
 	 */
-	public void divideList() {
+	public void divideList(InstructionInfo insInfo) {
 		int i = 0;
 		String hex = null;
 		long dec = 0;
@@ -57,30 +55,16 @@ public class FileParser {
 			/* If the line contains "x", it is a hexadecimal
 			 * representation of the instruction */
 			if(code.contains("x") && code != null) {
-				hexList.add(code);
+				insInfo.addHex(i, code);
 				hex = code.substring(2);
 				dec = Long.parseLong(hex, 16);
-				decList.add(dec);
+				insInfo.addDec(i, dec);
 			} else {
-				decList.add((long) Integer.parseInt(code));
+				insInfo.addDec(i, (long) Integer.parseInt(code));
 				hex = Integer.toHexString(Integer.parseInt(code));
-				hexList.add(hex);
+				insInfo.addHex(i, hex);
 			}
 			i++;
 		}
-	}
-	/**
-	 * Returns the hexList.
-	 * @return - hexList
-	 */
-	public ArrayList<String> getHexList() {
-		return hexList;
-	}
-	/**
-	 * Returns the decList.
-	 * @return - decList
-	 */
-	public ArrayList<Long> getDecList() {
-		return decList;
 	}
 }

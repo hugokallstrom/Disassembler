@@ -9,39 +9,26 @@ import java.util.ArrayList;
  *
  */
 public class Printer {
-
-	ArrayList<String> hexList;
-	ArrayList<Long> decList;
-	ArrayList<String> mnemonicList;
-	ArrayList<Character> formatList;
-
 	/**
 	 * Constructor.
-	 * @param decList - decimal list
-	 * @param hexList - hexadecimal list
-	 * @param formatList - format list
-	 * @param mnemonicList - mnemonic list
 	 */
-	public Printer(ArrayList<Long> decList, ArrayList<String> hexList, ArrayList<Character> formatList, ArrayList<String> mnemonicList) {
-		this.decList = decList;
-		this.hexList = hexList;
-		this.formatList = formatList;
-		this.mnemonicList = mnemonicList;
-	}
+	public Printer() {
 
+	}
 	/**
 	 * Prints the data.
 	 */
-	public void printData() {
+	public void printData(InstructionInfo insInfo) {
 		int i = 0;
 
-		while(i < mnemonicList.size()) {
-			System.out.println("#" + i + " ");
-			System.out.println("  frmt: " + formatList.get(i));
-			System.out.println("  dec: " + decList.get(i));
-			System.out.println("  hex: " + hexList.get(i));
-			System.out.println("  mnmc: " + mnemonicList.get(i));
+		while(i < insInfo.getSize()) {
+			System.out.println("#" + i);
+			System.out.println("  frmt: " + insInfo.getFormat(i));
+			System.out.println("  dec: " + insInfo.getDec(i));
+			System.out.println("  hex: " + insInfo.getHex(i));
+			System.out.println("  mnmc: " + insInfo.getMnemonic(i));
 			System.out.println("\n");
+			i++;
 		}
 	}
 }

@@ -5,6 +5,7 @@ import mappings.OpMappings;
 
 public class MnomicFormat {
 
+
 	public static char getFormat(int op) {
 		OpCode tempOp;
 
@@ -17,10 +18,9 @@ public class MnomicFormat {
 		}
 
 
+		OpCode temp = OpMappings.allOP[op];
 
-		tempOp = OpMappings.allOP[op];
-
-		char format = tempOp.getOpCodeType();
+		char format = temp.getOpCodeType();
 
 		return format;
 
@@ -28,6 +28,7 @@ public class MnomicFormat {
 
 	public static String getMnomicFormat(char format, long number) {
 
+		String mnemonic = "";
 		if(format == 'R') {
 			String temp = Long.toBinaryString(number);
 			int op = Integer.parseInt(temp.substring(0, 6));
@@ -44,7 +45,8 @@ public class MnomicFormat {
 			String regNick2 = OpMappings.registerNicks[rt];
 			String regNick3 = OpMappings.registerNicks[rd];
 
-			String mnemonic = functName + " " + regNick3 + " " + regNick1 + " " + regNick2;
+
+			mnemonic = functName + " " + regNick3 + " " + regNick1 + " " + regNick2;
 
 		} else if(format == 'I') {
 			String temp = Long.toBinaryString(number);
@@ -52,6 +54,7 @@ public class MnomicFormat {
 			int rs = Integer.parseInt(temp.substring(6, 11));
 			int rt = Integer.parseInt(temp.substring(11, 16));
 			int imm = Integer.parseInt(temp.substring(16, 32));
+
 
 			String functName = "";
 			if(op == 1) {
@@ -62,16 +65,44 @@ public class MnomicFormat {
 				OpCode temp2 = OpMappings.allOP[op];
 				functName = temp2.getOpCodeName();
 			}
+
+			OpCode temp2 = OpMappings.allOP[op];
+
+			String functName = temp2.getOpCodeName();
+
 			String regNick1 = OpMappings.registerNicks[rs];
 			String regNick2 = OpMappings.registerNicks[rt];
 
-			String mnemonic = functName + " " + regNick2 + " " + regNick1;
+			if(op .....) {
+
+			} else if(fdfdfsf) {
+
+			}else if (adfdf) {
+
+			}
+
+
+			mnemonic = functName + " " + regNick2 + " " + imm + regNick1;
 
 		} else if(format == 'J') {
 
+			String temp = Long.toBinaryString(number);
+			int op = Integer.parseInt(temp.substring(0, 6));
+			int label = Integer.parseInt(temp.substring(6, 32));
+
+			OpCode temp2 = OpMappings.allOP[op];
+			String functName = temp2.getOpCodeName();
+
+			mnemonic = functName + " " + label;
+
 		}
 
+		return mnemonic;
 
 	}
+
+
+
+
 
 }
