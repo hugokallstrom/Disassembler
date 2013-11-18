@@ -14,7 +14,7 @@ public class OpMappings {
 	public static String OP1Functions[];
 	public static String RFunctions[];
 	public static String OP28Functions[];
-	public static String OP161718Functions[];
+	public static String op1func1[];
 	public static String registerNicks[];
 
 	public OpMappings(){
@@ -23,7 +23,7 @@ public class OpMappings {
 			OP1Functions = new String[31];
 			RFunctions = new String[55];
 			OP28Functions = new String[35];
-			OP161718Functions = new String[31];
+			op1func1 = new String[2];
 
 			allOP[2] = new OpCode("j",'J');
 			allOP[3] = new OpCode("jal",'J');
@@ -154,15 +154,10 @@ public class OpMappings {
 			OP1Functions[18] = "bltzall";
 			OP1Functions[19] = "bgczall";
 
-			//filling op161718 with values
+			//filling op1func1 with values
 
-			OP161718Functions[0] = "mfc";
-			OP161718Functions[2] = "cfc";
-			OP161718Functions[4] = "mtc";
-			OP161718Functions[6] = "ctc";
-
-			OP161718Functions[16] = "mfc";
-
+			op1func1[0] = "movf";
+			op1func1[2] = "movt";
 
 
 			//filling in registers
