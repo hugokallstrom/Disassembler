@@ -16,7 +16,7 @@ public class MnomicFormat {
 			try {
 			OpCode temp = OpMappings.allOP[op];
 			format = temp.getOpCodeType();
-			} catch() {
+			} catch(Exception e) {
 				return (Character) null;
 			}
 		}
