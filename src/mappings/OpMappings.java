@@ -24,6 +24,7 @@ public class OpMappings {
 			RFunctions = new String[55];
 			OP28Functions = new String[35];
 			op1func1 = new String[2];
+			registerNicks = new String[32];
 
 			allOP[2] = new OpCode("j",'J');
 			allOP[3] = new OpCode("jal",'J');

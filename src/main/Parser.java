@@ -25,20 +25,31 @@ public class Parser {
 	 */
 	public void parseOP(InstructionInfo insInfo) {
 		int i = 0;
+		MnomicFormat mf = new MnomicFormat();
 
 		while(i < insInfo.getSize()) {
+			String mnemonic = "";
 			long instruction = insInfo.getDec(i);
-
+			System.out.println(Long.toBinaryString(instruction));
 			/* Extract the op from the instruction */
-			int op = (int) instruction/67108864;
+			System.out.println(Long.toHexString(instruction));
+			long op = instruction/67108864;
 
 			/* Insert format in formatList */
-			char format = MnomicFormat.getFormat(op);
+			char format = mf.getFormat(op);
 			insInfo.addFormat(i, format);
 
-			/* Insert mnemonic representaion in mnemonicList */
-			String mnemonic = MnomicFormat.getMnomicFormat(format, instruction);
+			System.out.println("op:" + op);
+			System.out.println("format: " + format);
+
+			if(format != 'E') {
+				/* Insert mnemonic representaion in mnemonicList */
+				mnemonic = mf.getMnomicFormat(format, instruction);
+			} else {
+				mnemonic = "Instruction not known";
+			}
 			insInfo.addMnemonic(i, mnemonic);
+
 			i++;
 		}
 	}
