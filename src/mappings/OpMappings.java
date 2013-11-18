@@ -157,7 +157,7 @@ public class OpMappings {
 			//filling op1func1 with values
 
 			op1func1[0] = "movf";
-			op1func1[2] = "movt";
+			op1func1[1] = "movt";
 
 
 			//filling in registers

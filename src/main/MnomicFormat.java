@@ -39,8 +39,39 @@ public class MnomicFormat {
 			String regNick1 = OpMappings.registerNicks[rs];
 			String regNick2 = OpMappings.registerNicks[rt];
 			String regNick3 = OpMappings.registerNicks[rd];
-
-			mnemonic = functName + " " + regNick3 + " " + regNick1 + " " + regNick2;
+			
+			if((funct >= 32 && funct <= 39)  || (funct >= 42 && funct <= 43) || (funct >= 10 && funct <= 11) ) {
+				mnemonic = functName + " " + regNick3 + " " + regNick1 + " " + regNick2;
+				//[funct rd rs rt]
+			} else if((funct >= 24 && funct <= 27) || (funct >= 48 && funct <= 54)) {
+				mnemonic = functName + " " + regNick1 + " " + regNick2;
+				//[funct rs rt]
+			} else if((funct == 17) || (funct == 19) || (funct == 8)) {
+				mnemonic = functName + " " + regNick1;
+				//[funct rs]
+			} else if((funct == 18) || (funct == 16)) {
+				mnemonic = functName + " " + regNick3;
+				//[funct rd]
+			} else if (funct == 13) {
+				mnemonic = functName + " " + rs + rt + rd + shamt ;
+				//[funct code]
+			} else if(funct == 12) {
+				mnemonic = functName;
+				//[functname]
+			} else if(funct == 9) {
+				mnemonic = functName + " " + regNick1 + " " + regNick3;
+				//[funct rs rd]
+			} else if ((funct >= 6 && funct <= 7) || (funct == 4)) {
+				mnemonic = functName + " " + regNick3 + " " + regNick2 + " " + regNick1;
+				//[funct rd rt rs]
+			} else if ((funct >= 2 && funct <= 3) || (funct == 0)) {
+				mnemonic = functName + " " + regNick3 + " " + regNick2 + " " + shamt;
+				//[funct rd rt shamt]
+			} else if(funct == 1) {
+				int bit16 = Integer.parseInt(temp.substring(16, 17));
+				String functName = OpMappings.op1func1[bit16];
+			}
+			
 
 		} else if(format == 'I') {
 			String temp = Long.toBinaryString(number);
@@ -62,7 +93,6 @@ public class MnomicFormat {
 			}else if (adfdf) {
 
 			}
-
 
 			mnemonic = functName + " " + regNick2 + " " + imm + regNick1;
 		} else if(format == 'J') {
