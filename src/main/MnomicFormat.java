@@ -134,8 +134,8 @@ public class MnomicFormat {
 			int op = Integer.parseInt(temp.substring(0, 6), 2);
 			int rs = Integer.parseInt(temp.substring(6, 11), 2);
 			int rt = Integer.parseInt(temp.substring(11, 16), 2);
-			int imm = Integer.parseInt(temp.substring(16, 32));
-			
+			int imm = Integer.parseInt(temp.substring(16, 32), 2);
+
 			String regNick1 = mappings.registerNicks[rs];
 			String regNick2 = mappings.registerNicks[rt];
 
