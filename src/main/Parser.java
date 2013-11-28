@@ -30,21 +30,15 @@ public class Parser {
 		while(i < insInfo.getSize()) {
 			String mnemonic = "";
 			long instruction = insInfo.getDec(i);
-			System.out.println(Long.toBinaryString(instruction));
 			/* Extract the op from the instruction */
-			System.out.println(Long.toHexString(instruction));
 			long op = instruction/67108864;
 
 			/* Insert format in formatList */
 			char format = mf.getFormat(op);
 			insInfo.addFormat(i, format);
-
-			System.out.println("op:" + op);
-			System.out.println("format: " + format);
-
 			if(format != 'E') {
 				/* Insert mnemonic representaion in mnemonicList */
-				mnemonic = mf.getMnomicFormat(format, instruction);
+				mnemonic = mf.getMnomicFormat(format, instruction, insInfo);
 			} else {
 				mnemonic = "Instruction not known";
 			}
