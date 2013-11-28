@@ -20,6 +20,9 @@ public class MnomicFormat {
 
 		if((op == 0) || (op == 28)) {
 			format = 'R';
+		}
+		else if(op == 1) {
+			format = 'I';
 		} else {
 			try {
 			OpCode temp = mappings.allOP[(int)op];
@@ -31,7 +34,7 @@ public class MnomicFormat {
 		return format;
 	}
 
-	public String getMnomicFormat(char format, long number) {
+	public String getMnomicFormat(char format, long number, InstructionInfo insInfo) {
 		String mnemonic = "";
 
 		if(number == 0) {
@@ -146,7 +149,8 @@ public class MnomicFormat {
 			int op = Integer.parseInt(temp.substring(0, 6), 2);
 			int rs = Integer.parseInt(temp.substring(6, 11), 2);
 			int rt = Integer.parseInt(temp.substring(11, 16), 2);
-			int imm = Integer.parseInt(temp.substring(16, 32), 2);
+			System.out.println("temp: " + temp.substring(16, 32));
+			short imm = (short)Integer.parseInt(temp.substring(16, 32), 2);
 
 			String regNick1 = "";
 			String regNick2 = "";
@@ -163,7 +167,7 @@ public class MnomicFormat {
 				if((rt >= 0 && rt <= 3) || (rt >= 16 && rt <= 19)
 						|| (rt >= 8 && rt <= 12) || (rt == 14)) {
 					functName = mappings.OP1Functions[rt];
-					mnemonic = functName + " " + regNick1 + " " +  imm;
+					mnemonic = functName + " " + regNick1 + " " +  4*imm;
 					//[funct rs label/imm]
 				} else {
 					mnemonic = "Instruction not known";
@@ -173,11 +177,11 @@ public class MnomicFormat {
 				functName = temp2.getOpCodeName();
 
 				if((op >= 4 && op <= 5) || (op >= 20 && op <= 21)) {
-					mnemonic = functName + " " + regNick1 + " " +  regNick2 + " " + imm;
+					mnemonic = functName + " " + regNick1 + " " +  regNick2 + " " + 4*imm;
 					//[funct rs rt offset]
 				} else if((op >= 6 && op <= 7) || (op >= 22 && op <= 23)) {
-					mnemonic = functName + " " + regNick1 + " " + imm;
-					//[funct rs offset]
+					mnemonic = functName + " " + regNick1 + " " + 4*imm;
+					//[funct rs offset]x
 				} else if(op >= 8 && op <= 14) {
 					mnemonic = functName + " " + regNick2 + " " +  regNick1 + " " + imm;
 					//[funct rt rs imm]
@@ -199,11 +203,12 @@ public class MnomicFormat {
 		} else if(format == 'J') {
 
 			int op = Integer.parseInt(temp.substring(0, 6), 2);
-			int label = Integer.parseInt(temp.substring(6, 32));
+			int label = Integer.parseInt(temp.substring(6, 32), 2);
+			String hexLabel = Integer.toHexString(4*label);
 
 			OpCode temp2 = mappings.allOP[op];
 			String functName = temp2.getOpCodeName();
-			mnemonic = functName + " " + label;
+			mnemonic = functName + " " + "0x" + hexLabel;
 		}
 		return mnemonic;
 	}

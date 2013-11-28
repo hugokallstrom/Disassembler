@@ -20,13 +20,14 @@ public class Printer {
 	 */
 	public void printData(InstructionInfo insInfo) {
 		int i = 0;
-		System.out.println(insInfo.getSize());
+
+		System.out.println("Nr	Format		Dec	 	Hex		Mnemonic");
 		while(i < insInfo.getSize()) {
 			System.out.print("#" + i);
-			System.out.print("  frmt: " + insInfo.getFormat(i));
-			System.out.print("  dec: " + insInfo.getDec(i));
-			System.out.print("  hex: " + insInfo.getHex(i));
-			System.out.print("  mnmc: " + insInfo.getMnemonic(i));
+			System.out.print("       " + insInfo.getFormat(i));
+			System.out.print("  " + insInfo.getDec(i));
+			System.out.print("  " + insInfo.getHex(i));
+			System.out.print("  " + insInfo.getMnemonic(i));
 			System.out.print("\n\n");
 			i++;
 		}

@@ -19,6 +19,8 @@ public class InstructionInfo {
 	ArrayList <Long> decList;
 	ArrayList <String> mnemonicList;
 	ArrayList <Character> formatList;
+	ArrayList <String> decompHex;
+	ArrayList <String> decompDec;
 	/**
 	 * Constructor, creating ArrayLists
 	 * for data
@@ -28,6 +30,8 @@ public class InstructionInfo {
 		decList = new ArrayList<Long>();
 		mnemonicList = new ArrayList<String>();
 		formatList = new ArrayList<Character>();
+		decompHex = new ArrayList<String>();
+		decompDec = new ArrayList<String>();
 	}
 	/**
 	 * Adds a hex to the ArrayList
@@ -60,6 +64,13 @@ public class InstructionInfo {
 	 */
 	public void addFormat(int index, char format) {
 		formatList.add(format);
+	}
+
+	public void addDecompHex(int index, String hex) {
+		decompHex.add(index, hex);
+	}
+	public void addDecompDec(int index, String dec) {
+		decompDec.add(index, dec);
 	}
 	/**
 	 * Gets a hex on index i from the
