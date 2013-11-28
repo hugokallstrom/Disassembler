@@ -1,6 +1,5 @@
 package main;
 
-import java.io.IOException;
 
 import mappings.OpCode;
 import mappings.OpMappings;
@@ -25,9 +24,7 @@ public class MnomicFormat {
 				return 'E';
 			}
 		}
-
 		return format;
-
 	}
 
 	public String getMnomicFormat(char format, long number) {
@@ -38,15 +35,18 @@ public class MnomicFormat {
 			return mnemonic;
 		}
 
+		String temp = Long.toBinaryString(number);
+
+		  StringBuilder leadingZeroes = new StringBuilder();
+		    for(int index = 0; index < 32- temp.length(); index++) {
+		        leadingZeroes = leadingZeroes.append("0");
+
+		    }
+		temp = leadingZeroes + temp;
+
 		if(format == 'R') {
-			String temp = Long.toBinaryString(number);
 
-			  StringBuilder leadingZeroes = new StringBuilder();
-			    for(int index = 0; index < 32- temp.length(); index++) {
-			        leadingZeroes = leadingZeroes.append("0");
 
-			    }
-			temp = leadingZeroes + temp;
 			int op = Integer.parseInt(temp.substring(0, 6), 2);
 			int rs = Integer.parseInt(temp.substring(6, 11), 2);
 			int rt = Integer.parseInt(temp.substring(11, 16), 2);
@@ -129,12 +129,13 @@ public class MnomicFormat {
 				mnemonic = "Instruction not known";
 			}
 		} else if(format == 'I') {
-			String temp = Long.toBinaryString(number);
+
+			System.out.println("temp: " + temp);
 			int op = Integer.parseInt(temp.substring(0, 6), 2);
 			int rs = Integer.parseInt(temp.substring(6, 11), 2);
 			int rt = Integer.parseInt(temp.substring(11, 16), 2);
-			String imm = temp.substring(16, 32);
-
+			int imm = Integer.parseInt(temp.substring(16, 32));
+			
 			String regNick1 = mappings.registerNicks[rs];
 			String regNick2 = mappings.registerNicks[rt];
 
@@ -153,7 +154,7 @@ public class MnomicFormat {
 				OpCode temp2 = mappings.allOP[op];
 				functName = temp2.getOpCodeName();
 
-				if((op >= 4 && op <= 5) && (op >= 20 && op <= 21)) {
+				if((op >= 4 && op <= 5) || (op >= 20 && op <= 21)) {
 					mnemonic = functName + " " + regNick1 + " " +  regNick2 + " " + imm;
 					//[funct rs rt offset]
 				} else if((op >= 6 && op <= 7) || (op >= 22 && op <= 23)) {
@@ -175,7 +176,7 @@ public class MnomicFormat {
 				}
 			}
 		} else if(format == 'J') {
-			String temp = Long.toBinaryString(number);
+
 			int op = Integer.parseInt(temp.substring(0, 6), 2);
 			int label = Integer.parseInt(temp.substring(6, 32));
 
