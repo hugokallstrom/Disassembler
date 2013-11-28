@@ -73,19 +73,23 @@ public class MnomicFormat {
 
 			String functName = "";
 
+			String decompDec = "[" + op + " " + rd + " " + rs + " " + rt + " " + shamt + " " + funct + "]";
+			insInfo.addDecompDec(decompDec);
+
+			String decompHex = "[" + Integer.toHexString(op) + " " +
+							   Integer.toHexString(rd) + " " +
+							   Integer.toHexString(rs) + " " +
+							   Integer.toHexString(rt) + " " +
+							   Integer.toHexString(shamt) + " " +
+							   Integer.toHexString(funct) + "]";
+			insInfo.addDecompHex(decompHex);
+
 			if(op == 0) {
 				if((funct >= 32 && funct <= 39)  || (funct >= 42 && funct <= 43)
 						|| (funct >= 10 && funct <= 11) ) {
 					functName = mappings.RFunctions[funct];
 					mnemonic = functName + " " + regNick3 + " " + regNick1
 							+ " " + regNick2;
-
-					String decompDec = "" + op + rd + rs + rt;
-					insInfo.addDecompDec(decompDec);
-					
-					String decompHex = Integer.toHexString(op) + 
-							Integer.toHexString(rs) + 
-					
 					//[funct rd rs rt]
 				} else if((funct >= 24 && funct <= 27) || (funct >= 48 && funct <= 54)) {
 					functName = mappings.RFunctions[funct];
@@ -150,6 +154,7 @@ public class MnomicFormat {
 			} else {
 				mnemonic = "Instruction not known";
 			}
+
 		} else if(format == 'I') {
 
 			System.out.println("temp: " + temp);
@@ -169,6 +174,15 @@ public class MnomicFormat {
 				return mnemonic;
 			}
 			String functName = "";
+
+			String decompDec = "[" + op + " " + rs + " " + rt + " " + imm + "]";
+			insInfo.addDecompDec(decompDec);
+
+			String decompHex = "[0x" +  Integer.toHexString(op) + " " +
+							   Integer.toHexString(rs) + " " +
+							   Integer.toHexString(rt) + " " +
+							   Integer.toHexString(imm) + "]";
+			insInfo.addDecompHex(decompHex);
 
 			if(op == 1) {
 				if((rt >= 0 && rt <= 3) || (rt >= 16 && rt <= 19)
@@ -215,6 +229,15 @@ public class MnomicFormat {
 
 			OpCode temp2 = mappings.allOP[op];
 			String functName = temp2.getOpCodeName();
+
+			String decompDec = "[" + op + " " + label + "]";
+			insInfo.addDecompDec(decompDec);
+
+			String decompHex = "[0x" +  Integer.toHexString(op) + " " +
+								Integer.toHexString(label) + "]";
+			insInfo.addDecompHex(decompHex);
+
+
 			mnemonic = functName + " " + "0x" + hexLabel;
 		}
 		return mnemonic;

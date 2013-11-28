@@ -41,6 +41,9 @@ public class Parser {
 				mnemonic = mf.getMnomicFormat(format, instruction, insInfo);
 			} else {
 				mnemonic = "Instruction not known";
+				String g = " ";
+				insInfo.addDecompDec(g);
+				insInfo.addDecompHex(g);
 			}
 			insInfo.addMnemonic(i, mnemonic);
 
