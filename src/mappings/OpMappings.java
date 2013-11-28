@@ -10,12 +10,13 @@ package mappings;
 public class OpMappings {
 
 
-	public  OpCode allOP[];
-	public  String OP1Functions[];
-	public  String RFunctions[];
-	public  String OP28Functions[];
-	public  String op1func1[];
-	public  String registerNicks[];
+	public static OpCode allOP[];
+	public static String OP1Functions[];
+	public static String RFunctions[];
+	public static String OP28Functions[];
+	public static String op1func1[];
+	public static String registerNicks[];
+
 
 	public OpMappings(){
 
@@ -25,6 +26,7 @@ public class OpMappings {
 			OP28Functions = new String[35];
 			op1func1 = new String[2];
 			registerNicks = new String[32];
+
 
 			allOP[2] = new OpCode("j",'J');
 			allOP[3] = new OpCode("jal",'J');
@@ -74,7 +76,7 @@ public class OpMappings {
 			allOP[58] = new OpCode("swc2",'I');
 
 			allOP[61] = new OpCode("sdc1",'I');
-			allOP[61] = new OpCode("sdc2",'I');
+			allOP[62] = new OpCode("sdc2",'I');
 
 			//filling in values for Rfunctions (with opCode 0x00)
 
