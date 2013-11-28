@@ -44,9 +44,9 @@ public class MnomicFormat {
 			  StringBuilder leadingZeroes = new StringBuilder();
 			    for(int index = 0; index < 32- temp.length(); index++) {
 			        leadingZeroes = leadingZeroes.append("0");
-			        temp = leadingZeroes + temp;
-			    }
 
+			    }
+			temp = leadingZeroes + temp;
 			int op = Integer.parseInt(temp.substring(0, 6), 2);
 			int rs = Integer.parseInt(temp.substring(6, 11), 2);
 			int rt = Integer.parseInt(temp.substring(11, 16), 2);
