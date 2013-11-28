@@ -25,8 +25,8 @@ public class Printer {
 		while(i < insInfo.getSize()) {
 			System.out.print("#" + i);
 			System.out.print("       " + insInfo.getFormat(i));
-			System.out.print("  " + insInfo.getDec(i));
-			System.out.print("  " + insInfo.getHex(i));
+			System.out.print("  " + insInfo.getDecompDec(i));
+			System.out.print("  " + insInfo.getDecompHex(i));
 			System.out.print("  " + insInfo.getMnemonic(i));
 			System.out.print("\n\n");
 			i++;

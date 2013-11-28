@@ -67,6 +67,13 @@ public class MnomicFormat {
 					functName = mappings.RFunctions[funct];
 					mnemonic = functName + " " + regNick3 + " " + regNick1
 							+ " " + regNick2;
+
+					String decompDec = "" + op + rd + rs + rt;
+					insInfo.addDecompDec(decompDec);
+					
+					String decompHex = Integer.toHexString(op) + 
+							Integer.toHexString(rs) + 
+					
 					//[funct rd rs rt]
 				} else if((funct >= 24 && funct <= 27) || (funct >= 48 && funct <= 54)) {
 					functName = mappings.RFunctions[funct];

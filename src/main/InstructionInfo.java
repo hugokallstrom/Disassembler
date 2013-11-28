@@ -66,11 +66,11 @@ public class InstructionInfo {
 		formatList.add(format);
 	}
 
-	public void addDecompHex(int index, String hex) {
-		decompHex.add(index, hex);
+	public void addDecompHex(String hex) {
+		decompHex.add(hex);
 	}
-	public void addDecompDec(int index, String dec) {
-		decompDec.add(index, dec);
+	public void addDecompDec(String dec) {
+		decompDec.add(dec);
 	}
 	/**
 	 * Gets a hex on index i from the
@@ -107,6 +107,14 @@ public class InstructionInfo {
 	 */
 	public char getFormat(int index) {
 		return formatList.get(index);
+	}
+
+	public String getDecompDec(int index) {
+		return decompDec.get(index);
+	}
+
+	public String getDecompHex(int index) {
+		return decompHex.get(index);
 	}
 	/**
 	 * Gets the size of the decimal ArrayList
