@@ -17,6 +17,7 @@ public class OpMappings {
 	public static String op1func1[];
 	public static String registerNicks[];
 
+
 	public OpMappings(){
 
 			allOP = new OpCode[63];
@@ -24,6 +25,8 @@ public class OpMappings {
 			RFunctions = new String[55];
 			OP28Functions = new String[35];
 			op1func1 = new String[2];
+			registerNicks = new String[32];
+
 
 			allOP[2] = new OpCode("j",'J');
 			allOP[3] = new OpCode("jal",'J');
@@ -73,7 +76,7 @@ public class OpMappings {
 			allOP[58] = new OpCode("swc2",'I');
 
 			allOP[61] = new OpCode("sdc1",'I');
-			allOP[61] = new OpCode("sdc2",'I');
+			allOP[62] = new OpCode("sdc2",'I');
 
 			//filling in values for Rfunctions (with opCode 0x00)
 

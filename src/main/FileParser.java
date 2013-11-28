@@ -4,18 +4,30 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 
-
+/**
+ * Reads a file and parses the data into two
+ * lists containing hexadecimal and decimal
+ * represenations of the MIPS-instructions.
+ *
+ * @author oi11hkm
+ *
+ */
 public class FileParser {
 
 	ArrayList <String> codeList = new ArrayList<String>();
-	ArrayList <String> hexList = new ArrayList<String>();
-	ArrayList <Long> decList = new ArrayList<Long>();
 	String file;
 
+	/**
+	 * Constructor.
+	 * @param file - name of the file
+	 */
 	public FileParser(String file) {
 		this.file = file;
 	}
-
+	/**
+	 * readFile - reads the file specified as the input argument "file"
+	 * and puts every line in a list containing strings.
+	 */
 	public void readFile() {
 		String line = null;
 
@@ -29,36 +41,30 @@ public class FileParser {
 			e.printStackTrace();
 		}
 	}
-
-	public void divideList() {
+	/**
+	 * divideList - divides the list, "codeList", and creates
+	 * hexadecimal and decimal representations of all instructions.
+	 */
+	public void divideList(InstructionInfo insInfo) {
 		int i = 0;
 		String hex = null;
 		long dec = 0;
 
 		while(i < codeList.size()) {
 			String code = codeList.get(i);
-
+			/* If the line contains "x", it is a hexadecimal
+			 * representation of the instruction */
 			if(code.contains("x") && code != null) {
-				hexList.add(i, code);
+				insInfo.addHex(i, code);
 				hex = code.substring(2);
 				dec = Long.parseLong(hex, 16);
-				decList.add(dec);
+				insInfo.addDec(i, dec);
 			} else {
-				decList.add(i, (long) Integer.parseInt(code));
+				insInfo.addDec(i, (long) Integer.parseInt(code));
 				hex = Integer.toHexString(Integer.parseInt(code));
-				hexList.add(hex);
+				insInfo.addHex(i, hex);
 			}
 			i++;
 		}
-		System.out.println("Hex list:" + hexList.toString());
-		System.out.println("Dec list:" + decList.toString());
-	}
-
-	public ArrayList<String> getHexList() {
-		return hexList;
-	}
-
-	public ArrayList<Long> getDecList() {
-		return decList;
 	}
 }
