@@ -28,13 +28,14 @@ public class FileParser {
 	 * readFile - reads the file specified as the input argument "file"
 	 * and puts every line in a list containing strings.
 	 */
-	public void readFile() {
+	public void readFile(InstructionInfo insInfo) {
 		String line = null;
 
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(file));
 			while((line = br.readLine()) != null) {
-				codeList.add(line);
+				//codeList.add(line);
+				insInfo.addCode(line);
 			}
 			br.close();
 		} catch (Exception e) {
@@ -50,8 +51,8 @@ public class FileParser {
 		String hex = null;
 		long dec = 0;
 
-		while(i < codeList.size()) {
-			String code = codeList.get(i);
+		while(i < insInfo.getCodeSize()) {
+			String code = insInfo.getCode(i);
 			/* If the line contains "x", it is a hexadecimal
 			 * representation of the instruction */
 			if(code.contains("x") && code != null) {

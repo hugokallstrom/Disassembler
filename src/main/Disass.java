@@ -36,7 +36,7 @@ public class Disass {
 
 		/* Read the file with hex and dec instructions */
 		FileParser reader = new FileParser(file);
-		reader.readFile();
+		reader.readFile(insInfo);
 		reader.divideList(insInfo);
 
 		/* Parse the instructions */

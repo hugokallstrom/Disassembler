@@ -15,6 +15,7 @@ import java.util.ArrayList;
  */
 public class InstructionInfo {
 
+	ArrayList <String> codeList;
 	ArrayList <String> hexList;
 	ArrayList <Long> decList;
 	ArrayList <String> mnemonicList;
@@ -26,12 +27,16 @@ public class InstructionInfo {
 	 * for data
 	 */
 	public InstructionInfo() {
+		codeList = new ArrayList<String>();
 		hexList = new ArrayList<String>();
 		decList = new ArrayList<Long>();
 		mnemonicList = new ArrayList<String>();
 		formatList = new ArrayList<Character>();
 		decompHex = new ArrayList<String>();
 		decompDec = new ArrayList<String>();
+	}
+	public void addCode(String code) {
+		codeList.add(code);
 	}
 	/**
 	 * Adds a hex to the ArrayList
@@ -71,6 +76,9 @@ public class InstructionInfo {
 	}
 	public void addDecompDec(String dec) {
 		decompDec.add(dec);
+	}
+	public String getCode(int index) {
+		return codeList.get(index);
 	}
 	/**
 	 * Gets a hex on index i from the
@@ -115,6 +123,9 @@ public class InstructionInfo {
 
 	public String getDecompHex(int index) {
 		return decompHex.get(index);
+	}
+	public int getCodeSize() {
+		return codeList.size();
 	}
 	/**
 	 * Gets the size of the decimal ArrayList
