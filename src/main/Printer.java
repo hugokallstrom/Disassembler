@@ -1,6 +1,5 @@
 package main;
 
-import java.util.ArrayList;
 /**
  * Prints the parsed data contained
  * in different ArrayLists.

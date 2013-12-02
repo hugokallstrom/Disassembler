@@ -170,11 +170,9 @@ public class MnomicFormat {
 		// The String is different depending on the value of rt and op.
 		} else if(format == 'I') {
 
-			System.out.println("temp: " + temp);
 			int op = Integer.parseInt(temp.substring(0, 6), 2);
 			int rs = Integer.parseInt(temp.substring(6, 11), 2);
 			int rt = Integer.parseInt(temp.substring(11, 16), 2);
-			System.out.println("temp: " + temp.substring(16, 32));
 			short imm = (short)Integer.parseInt(temp.substring(16, 32), 2);
 
 			String regNick1 = mappings.registerNicks[rs];
