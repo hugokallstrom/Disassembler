@@ -2,7 +2,6 @@ package main;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.ArrayList;
 
 /**
  * Reads a file and parses the data into two
@@ -14,7 +13,6 @@ import java.util.ArrayList;
  */
 public class FileParser {
 
-	ArrayList <String> codeList = new ArrayList<String>();
 	String file;
 
 	/**
@@ -34,7 +32,6 @@ public class FileParser {
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(file));
 			while((line = br.readLine()) != null) {
-				//codeList.add(line);
 				insInfo.addCode(line);
 			}
 			br.close();
