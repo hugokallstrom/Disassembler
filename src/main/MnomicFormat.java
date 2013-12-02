@@ -1,19 +1,31 @@
 package main;
 
-import java.io.IOException;
-
 import mappings.OpCode;
 import mappings.OpMappings;
 
+/**
+ * A class that has a method to find out what format a instruction has
+ * depending on the operation and a method that creates a String of
+ * the mnemonic form for a instruction.
+ * @author Markus Sköld (oi11msd)
+ *
+ */
 public class MnomicFormat {
 
 	private OpMappings mappings;
 
+	/**
+	 * The constructor, it creates a object of the class OpMappings.
+	 */
 	public MnomicFormat() {
 		mappings = new OpMappings();
 	}
 
-
+	/**
+	 * A method that returns the format 'R', 'I' or 'J'.
+	 * @param op - A long that represent different MIP instructions.
+	 * @return - A char that represent what format the instruction has.
+	 */
 	public char getFormat(long op) {
 
 		char format;
@@ -34,13 +46,15 @@ public class MnomicFormat {
 		return format;
 	}
 
+	/**
+	 * A method that creates a String in mnemonic format for the instruction.
+	 * @param format - The format of the instruction.
+	 * @param number - The instruction in long.
+	 * @param insInfo - A class that is used for the printing.
+	 * @return - A String of the instruction in mnemonic format.
+	 */
 	public String getMnomicFormat(char format, long number, InstructionInfo insInfo) {
 		String mnemonic = "";
-
-		if(number == 0) {
-			mnemonic = "nop";
-			return mnemonic;
-		}
 
 		String temp = Long.toBinaryString(number);
 
@@ -51,6 +65,8 @@ public class MnomicFormat {
 		}
 		temp = leadingZeroes + temp;
 
+		// Creates a String in mnemonic format for instructions in format R.
+		// The String is different depending on the value of funct and op.
 		if(format == 'R') {
 			int op = Integer.parseInt(temp.substring(0, 6), 2);
 			int rs = Integer.parseInt(temp.substring(6, 11), 2);
@@ -59,31 +75,27 @@ public class MnomicFormat {
 			int shamt = Integer.parseInt(temp.substring(21, 26), 2);
 			int funct = Integer.parseInt(temp.substring(26, 32), 2);
 
-			String regNick1 = "";
-			String regNick2 = "";
-			String regNick3 = "";
-			if(rs >= 0 && rs < 32 || rt >= 0 && rt < 32 || rd >= 0 && rd < 32) {
-				regNick1 = mappings.registerNicks[rs];
-				regNick2 = mappings.registerNicks[rt];
-				regNick3 = mappings.registerNicks[rd];
-			} else {
-				mnemonic = "Instruction not known";
-				return mnemonic;
-			}
+			String regNick1 = mappings.registerNicks[rs];
+			String regNick2 = mappings.registerNicks[rt];
+			String regNick3 = mappings.registerNicks[rd];
 
 			String functName = "";
 
 			String decompDec = "[" + op + " " + rd + " " + rs + " " + rt + " " + shamt + " " + funct + "]";
 			insInfo.addDecompDec(decompDec);
 
-			String decompHex = "[" + Integer.toHexString(op) + " " +
-							   Integer.toHexString(rd) + " " +
-							   Integer.toHexString(rs) + " " +
-							   Integer.toHexString(rt) + " " +
-							   Integer.toHexString(shamt) + " " +
-							   Integer.toHexString(funct) + "]";
+			String decompHex = "[0x" + Integer.toHexString(op) + " " +
+							   "0x" + Integer.toHexString(rd) + " " +
+							   "0x" + Integer.toHexString(rs) + " " +
+							   "0x" + Integer.toHexString(rt) + " " +
+							   "0x" + Integer.toHexString(shamt) + " " +
+							   "0x" + Integer.toHexString(funct) + "]";
 			insInfo.addDecompHex(decompHex);
 
+			if(number == 0) {
+				mnemonic = "nop";
+				return mnemonic;
+			}
 			if(op == 0) {
 				if((funct >= 32 && funct <= 39)  || (funct >= 42 && funct <= 43)
 						|| (funct >= 10 && funct <= 11) ) {
@@ -132,7 +144,7 @@ public class MnomicFormat {
 					mnemonic = functName + " " + regNick3 + " " + regNick1 + " " + cc;
 					//[funct rd rs cc]
 				} else {
-					mnemonic = "Instruction not known";
+					mnemonic = "OP: " + op + " " +  "funct: " + funct + " is unknown";
 				}
 			} else if(op == 28) {
 				if((funct >= 0 && funct <= 1) || (funct >= 4 && funct <= 5)) {
@@ -149,12 +161,13 @@ public class MnomicFormat {
 					mnemonic = functName + " " + regNick3 + " " + regNick1;
 					//[funct rd rs]
 				} else {
-					mnemonic = "Instruction not known";
+					mnemonic = "OP: " + op + " " + "funct: " + funct + " is unknown";
 				}
 			} else {
 				mnemonic = "Instruction not known";
 			}
-
+		// Creates a String in mnemonic format for instructions in the format I.
+		// The String is different depending on the value of rt and op.
 		} else if(format == 'I') {
 
 			System.out.println("temp: " + temp);
@@ -164,24 +177,18 @@ public class MnomicFormat {
 			System.out.println("temp: " + temp.substring(16, 32));
 			short imm = (short)Integer.parseInt(temp.substring(16, 32), 2);
 
-			String regNick1 = "";
-			String regNick2 = "";
-			if(rs >= 0 && rs < 32 || rt >= 0 && rt < 32) {
-				regNick1 = mappings.registerNicks[rs];
-				regNick2 = mappings.registerNicks[rt];
-			} else {
-				mnemonic = "Instruction not known";
-				return mnemonic;
-			}
+			String regNick1 = mappings.registerNicks[rs];
+			String regNick2 = mappings.registerNicks[rt];
+
 			String functName = "";
 
 			String decompDec = "[" + op + " " + rs + " " + rt + " " + imm + "]";
 			insInfo.addDecompDec(decompDec);
 
 			String decompHex = "[0x" +  Integer.toHexString(op) + " " +
-							   Integer.toHexString(rs) + " " +
-							   Integer.toHexString(rt) + " " +
-							   Integer.toHexString(imm) + "]";
+								"0x" + Integer.toHexString(rs) + " " +
+								"0x" + Integer.toHexString(rt) + " " +
+								"0x" + Integer.toHexString(imm) + "]";
 			insInfo.addDecompHex(decompHex);
 
 			if(op == 1) {
@@ -191,7 +198,7 @@ public class MnomicFormat {
 					mnemonic = functName + " " + regNick1 + " " +  4*imm;
 					//[funct rs label/imm]
 				} else {
-					mnemonic = "Instruction not known";
+					mnemonic = "OP: " + op + " rt: " + rt + " is unknown";
 				}
 			} else {
 				OpCode temp2 = mappings.allOP[op];
@@ -214,13 +221,15 @@ public class MnomicFormat {
 						|| (op == 56) || (op ==58) || (op ==62)) {
 					mnemonic = functName + " " + regNick2 + " " + imm + "(" + regNick1 + ")";
 					//[funct rt offset(base/rs)]
+				} else if(op == 47) {
+					mnemonic = functName + " " + op + " " + imm + "(" + regNick1 + ")";
+					//[funct op offset(base)]
 				} else if((op == 47) || (op == 51)) {
 					mnemonic = functName + " " + rt + " " + imm + "(" + regNick1 + ")";
-					//[funct op offset(base)]
-				} else {
-					mnemonic = "Instruction not known";
+					//[funct hint offset(base)]
 				}
 			}
+		// Creates a String in mnemonic format for instructions in format J.
 		} else if(format == 'J') {
 
 			int op = Integer.parseInt(temp.substring(0, 6), 2);
@@ -234,7 +243,7 @@ public class MnomicFormat {
 			insInfo.addDecompDec(decompDec);
 
 			String decompHex = "[0x" +  Integer.toHexString(op) + " " +
-								Integer.toHexString(label) + "]";
+								"0x" + Integer.toHexString(label) + "]";
 			insInfo.addDecompHex(decompHex);
 
 

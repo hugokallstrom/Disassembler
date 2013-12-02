@@ -10,12 +10,12 @@ package mappings;
 public class OpMappings {
 
 
-	public static OpCode allOP[];
-	public static String OP1Functions[];
-	public static String RFunctions[];
-	public static String OP28Functions[];
-	public static String op1func1[];
-	public static String registerNicks[];
+	public OpCode allOP[];
+	public String OP1Functions[];
+	public String RFunctions[];
+	public String OP28Functions[];
+	public String op1func1[];
+	public String registerNicks[];
 
 
 	public OpMappings(){
